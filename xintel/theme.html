@@ -1,0 +1,327 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<{$xoops_langcode}>" lang="<{$xoops_langcode}>">
+<Script Language="JavaScript">
+<!--
+var spSTim11="　";
+function time01() {
+var dayTim,jiTim,funTim,byoTim,goze;
+dayTim=new Date();
+jiTim=dayTim.getHours();
+funTim=dayTim.getMinutes();
+byoTim=dayTim.getSeconds();
+if (jiTim<12) goze="午前 ";
+else {
+goze="午後 ";
+jiTim=jiTim-12;
+}
+document.time01.timeform.value=spSTim11+goze+jiTim+"時"+funTim+"分"+byoTim+"秒";
+setTimeout("time01()",1000);
+}
+// End -->
+</Script>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=<{$xoops_charset}>" />
+<meta http-equiv="content-language" content="<{$xoops_langcode}>" />
+<meta name="robots" content="<{$xoops_meta_robots}>" />
+<meta name="keywords" content="<{$xoops_meta_keywords}>" />
+<meta name="description" content="<{$xoops_meta_description}>" />
+<meta name="rating" content="<{$xoops_meta_rating}>" />
+<meta name="author" content="<{$xoops_meta_author}>" />
+<meta name="copyright" content="<{$xoops_meta_copyright}>" />
+<meta name="generator" content="XOOPS" />
+<title><{$xoops_sitename}> - <{$xoops_pagetitle}></title>
+<link href="<{$xoops_url}>/favicon.ico" rel="SHORTCUT ICON" />
+<link rel="stylesheet" type="text/css" media="all" href="<{$xoops_url}>/xoops.css" />
+<link rel="stylesheet" type="text/css" media="all" href="<{$xoops_themecss}>" />
+<!-- RMV: added module header -->
+<{$xoops_module_header}>
+<script type="text/javascript">
+<!--
+<{$xoops_js}>
+//-->
+</script>
+</head>
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td id=headerleft><a href="<{$xoops_url}>/"><img src="<{$xoops_imageurl}>logo.gif"></a></td>
+    <td id=headercenter>
+<a href="http://www.xoops.org/">Xoops Official</a>&nbsp;|&nbsp;<a href="http://jp.xoops.org/">日本公式サイト</a>
+<font style=font-size:30px><br>
+<a href="<{$xoops_url}>/modules/news/"><img src="<{$xoops_imageurl}>btn1.gif"></a><a href="<{$xoops_url}>/modules/newbb/"><img src="<{$xoops_imageurl}>btn2.gif"></a>
+<br></font>
+<img src="<{$xoops_imageurl}>blt.gif"><a href="<{$xoops_url}>/modules/xoopsheadline/">ニュースヘッドライン</a>&nbsp;&nbsp;<img src="<{$xoops_imageurl}>blt.gif"><a href="<{$xoops_url}>/modules/mydownloads/">ダウンロード</a>&nbsp;&nbsp;<img src="<{$xoops_imageurl}>blt.gif"><a href="<{$xoops_url}>/modules/mylinks/">特選リンク集</a>&nbsp;&nbsp;<img src="<{$xoops_imageurl}>blt.gif"><a href="<{$xoops_url}>/modules/xtremguestbook/">ゲストブック</a>
+</td>
+    <td id=headerright>
+<a href="<{$xoops_url}>/user.php">アカウント情報</a>&nbsp;|&nbsp;<a href="<{$xoops_url}>/modules/contact/">お問い合わせ</a><br>
+<FORM NAME="time01"><INPUT TYPE="text" size="25" NAME="timeform" style="border-style:solid;border-width:1px;border-color:#FFFFFF;color:#FFFFFF;background:#3366FF"></FORM>
+<Script Language="JavaScript">
+<!-- 
+time01();
+//-->
+</Script>
+</td>
+  </tr>
+  <tr> 
+    <td id="header1"><img src="<{$xoops_imageurl}>mac.gif"></td>
+    <td id="header2">
+<!-- =====================================================================================
+                                    Calendar Version 0.01
+                            http://homepage3.nifty.com/masas/sdir/
+                         Copyright(c)2002 Masa. All Rights Reserved.
+====================================================================================== -->
+<script language="javascript">
+<!--
+monstr = new Array();
+yostr = new Array();
+/*----------------*
+ * 設定はここから *
+ *----------------*/
+var clfont     = "sans-serif";  // フォントの種類（全体共通）
+
+var frbgcolor  = "#5588ff";	    // 外枠の背景色
+var frborder   = 5;             // 外枠の幅
+var monfnsize  = "10pt";        // 月のフォントサイズ
+var frfncolor  = "#ffffff";     // 月の文字色
+
+var inbgcolor  = "#ffffff";     // 日付部の背景色
+var yobgcolor  = "#ffffee";     // 曜日部の背景色
+var tdbgcolor  = "#ffeeee";     // 本日の背景色
+var dwidth     = 20;            // 日付・曜日欄の幅
+var dheight    = 10;            // 日付・曜日欄の高さ
+var dayfnsize  = "9pt";         // 日付と曜日のフォントサイズ
+var dayfncolor = "#333333";     // 平日の文字色（曜日・日付共通）
+var kdfncolor  = "#ff3333";     // 日曜・休日の文字色（曜日・日付共通）
+var ndstr      = "・";          // 日付なし欄に出す文字
+var ndfncolor  = "#cccccc";     // 日付なし欄の文字色
+
+// 月の表示文字
+monstr[0]  = "January";    //  1月
+monstr[1]  = "February";   //  2月
+monstr[2]  = "March";      //  3月
+monstr[3]  = "April";      //  4月
+monstr[4]  = "May";        //  5月
+monstr[5]  = "June";       //  6月
+monstr[6]  = "July";       //  7月
+monstr[7]  = "August";     //  8月
+monstr[8]  = "September";  //  9月
+monstr[9]  = "October";    // 10月
+monstr[10] = "November";   // 11月
+monstr[11] = "December";   // 12月
+
+// 曜日の表示文字
+yostr[0] = "Sun";  // 日曜
+yostr[1] = "Mon";  // 月曜
+yostr[2] = "Tue";  // 火曜
+yostr[3] = "Wed";  // 水曜
+yostr[4] = "Thu";  // 木曜
+yostr[5] = "Fri";  // 金曜
+yostr[6] = "Sat";  // 土曜
+
+/*----------------*
+ * 設定はここまで *
+ *----------------*/
+//for test
+var test = 0;	// 1:testmode on
+var testyear = 2003;  // year for test
+var testmonth = 9;    // month for test
+var testday = 1;      // day for test
+//
+maxday = new Array(31,28,31,30,31,30,31,31,30,31,30,31);
+var date = new Date();
+if (test == 1) { date.setYear(testyear); date.setMonth(testmonth-1); date.setDate(testday); }
+var year = date.getFullYear();
+var month = date.getMonth() + 1;
+var today = date.getDate();
+if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) { maxday[1]++; }
+date.setDate(1);
+var yo1 = date.getDay();
+var flag = 0;
+var daycnt = 1;
+var moncnt = 0;
+var yasumi, syuku, furi;
+document.write('<table border="0" bgcolor="' + frbgcolor + '" cellpadding="' + frborder + '" cellspacing="0">');
+document.write('<tr><td align="center">');
+document.write('<span style="font-family:' + clfont + ';font-size:' + monfnsize + '">');
+document.write('<font color="' + frfncolor + '"><b>'
+  + monstr[month-1] + ' ' + year + '<\/font><\/b><\/span><br>');
+// 曜日欄
+document.write('<table border="0" bgcolor="' + inbgcolor + '" cellpadding="0" cellspacing="0">');
+document.write('<tr bgcolor="' + yobgcolor + '">');
+for (yo = 0; yo < 7; yo++) {
+  document.write('<td width="' + dwidth + '" height="' + dheight + '" align="center">');
+  document.write('<span style="font-family:' + clfont + ';font-size:' + dayfnsize + '">');
+  if (yo == 0) { document.write('<font color="' + kdfncolor + '">'); }
+    else { document.write('<font color="' + dayfncolor + '">'); }
+  document.write(yostr[yo]);
+  if (yo == 0) { document.write('<\/font>'); }
+  document.write('<\/span>');
+  document.write('<\/td>');
+}
+document.write('<\/tr>');
+while (flag < 2) {
+  document.write('<tr>');
+  for (yo = 0; yo < 7; yo++) {
+    document.write('<td width="' + dwidth + '" height="' + dheight + '" align="center"');
+    if (flag == 0 && yo1 == yo) { flag = 1; }	// 1日
+    if (flag == 1) {	// 日付あり
+      if (daycnt == today) {
+        document.write('bgcolor="' + tdbgcolor + '"');	// 本日の背景設定
+      }
+      document.write('>');
+      document.write('<span style="font-family:' + clfont + ';font-size:' + dayfnsize + '">');
+      yasumi = 0;
+      syuku = 0;
+      // 月曜に関する処理 (Happy Mondayと振替休日)
+      if (yo == 1) {
+        if (furi == 1) {
+          yasumi = 1;
+          furi = 0;
+        }
+        if (++moncnt == 2) {	// 第2月曜
+          if (month == 1) { syuku = 1; }	// 1月 成人の日
+          if (month == 10) { syuku = 1; }	// 10月 体育の日
+        }
+        if (moncnt == 3) {		// 第3月曜
+          if (year >= 2003 && month == 7) { syuku = 1; } 	// 7月 海の日 (2003〜)
+          if (year >= 2003 && month == 9) { syuku = 1; } 	// 9月 敬老の日 (2003〜)
+        }
+      }
+      // Happy Monday以外の祝日に関する処理
+      if (month == 1 && daycnt == 1) { syuku = 1; }		//  1月 1日 元日
+      if (month == 2 && daycnt == 11) { syuku = 1; }	//  2月11日 建国記念の日
+      if (month == 3) {
+        if (daycnt == Math.floor(20.8431+0.242194*(year-1980))-Math.floor((year-1980)/4)) {
+          syuku = 1;	// 春分の日
+        }
+      }
+      if (month == 4 && daycnt == 29) { syuku = 1; }	//  4月29日 みどりの日
+      if (month == 5 && daycnt == 3) { syuku = 1; }		//  5月 3日 憲法記念日
+      if (month == 5 && daycnt == 4) { syuku = 1; }		//  5月 4日 国民の休日
+      if (month == 5 && daycnt == 5) { syuku = 1; }		//  5月 5日 こどもの日
+      if (month == 9) {
+        if (daycnt == Math.floor(23.2488+0.242194*(year-1980))-Math.floor((year-1980)/4)) {
+          syuku = 1;	// 秋分の日
+        }
+      }
+      if (month == 11 && daycnt == 3) { syuku = 1; }	// 11月 3日 文化の日
+      if (month == 11 && daycnt == 23) { syuku = 1; }	// 11月23日 勤労感謝の日
+      if (month == 12 && daycnt == 23) { syuku = 1; }	// 12月23日 天皇誕生日
+      if (year < 2003 && month == 7 && daycnt == 20) { syuku = 1; }	// 7月20日 海の日 (〜2002)
+      if (year < 2003 && month == 9 && daycnt == 15) { syuku = 1; }	//  9月15日 敬老の日 (〜2002)
+      if (syuku == 1) { yasumi = 1; }
+      // 日曜に関する処理
+      if (yo == 0) {
+        yasumi = 1;
+        if (syuku == 1) { furi = 1; }
+      }
+      if (yasumi == 1) { document.write('<font color="' + kdfncolor + '">' + daycnt + '<\/font>'); }
+        else { document.write('<font color="' + dayfncolor + '">' + daycnt + '<\/font>'); }
+      if (++daycnt > maxday[month - 1]) { flag = 2; }	// 最終日
+    } else {	// 日付なし
+      document.write('><font color="' + ndfncolor + '">' + ndstr + '<\/font>');
+    }
+    document.write('<\/span>');
+    document.write('<\/td>');
+  }
+  document.write('<\/tr>');
+}
+document.write('<\/table>');
+document.write('<\/td><\/tr><\/table>');
+// -->
+</script>
+<!-- ============================== End of Calendar ================================== -->
+</td>
+    <td id=header3><img src="<{$xoops_imageurl}>back2.gif"><br><img src="<{$xoops_imageurl}>titlebar.gif"><br>
+<form action="<{$xoops_url}>/search.php" method="post">
+<font style="font-size:12px;color:#FFFFFF;">&nbsp;<b>サイト内検索</b>&nbsp;</font><input type="text" name="query" class="navinput" /><input type="hidden" name="action" value="results" />&nbsp;<input class="navinputImage" type="image" src="<{$xoops_imageurl}>searchButton.gif" name="searchSubmit" /></form><br>
+</td>
+  </tr>
+  <tr> 
+    <td colspan="3" id=headerbar>&nbsp;</td>
+  </tr>
+</table>
+
+<br>
+  <table cellspacing="0">
+    <tr>
+      <td id="leftcolumn">
+        <!-- Start left blocks loop -->
+        <{foreach item=block from=$xoops_lblocks}>
+          <{include file="xintel/theme_blockleft.html"}><br>
+        <{/foreach}>
+        <!-- End left blocks loop -->
+
+      </td>
+
+      <td id="centercolumn">
+
+        <!-- Display center blocks if any -->
+        <{if $xoops_showcblock == 1}>
+
+        <table cellspacing="0">
+          <tr>
+            <td id="centerCcolumn" colspan="2">
+
+            <!-- Start center-center blocks loop -->
+            <{foreach item=block from=$xoops_ccblocks}>
+              <{include file="xintel/theme_blockcenter_c.html"}>
+            <{/foreach}>
+            <!-- End center-center blocks loop -->
+
+            </td>
+          </tr>
+          <tr>
+            <td id="centerLcolumn">
+
+            <!-- Start center-left blocks loop -->
+              <{foreach item=block from=$xoops_clblocks}>
+                <{include file="xintel/theme_blockcenter_l.html"}><br>
+              <{/foreach}>
+            <!-- End center-left blocks loop -->
+
+            </td><td id="centerRcolumn">
+
+            <!-- Start center-right blocks loop -->
+              <{foreach item=block from=$xoops_crblocks}>
+                <{include file="xintel/theme_blockcenter_r.html"}><br>
+              <{/foreach}>
+            <!-- End center-right blocks loop -->
+
+            </td>
+          </tr>
+        </table>
+
+        <{/if}>
+        <!-- End display center blocks -->
+
+        <div id="content">
+          <{$xoops_contents}>
+        </div>
+      </td>
+
+      <{if $xoops_showrblock == 1}>
+
+      <td id="rightcolumn">
+        <!-- Start right blocks loop -->
+        <{foreach item=block from=$xoops_rblocks}>
+          <{include file="xintel/theme_blockright.html"}><br>
+        <{/foreach}>
+        <!-- End right blocks loop -->
+      </td>
+
+      <{/if}>
+
+    </tr>
+  </table>
+
+  <table cellspacing="0">
+    <tr>
+      <td id="footerbar" bgcolor="0033FF" width=25%></td>
+      <td id="footerbar" bgcolor="3366FF">　<a href="http://www.xoops.org/">Xoops Official</a>&nbsp;|&nbsp;<a href="http://jp.xoops.org/">日本公式サイト</a>
+</td>
+      <td id="footerbar" bgcolor="3366FF" align=right>copyright (c) 2003 OCEAN-NET</td>
+    </tr>
+  </table>
+</body>
+</html>
